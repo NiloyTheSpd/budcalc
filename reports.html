@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Tracker - Reports</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { income: '#22c55e', expense: '#ef4444' } } }, darkMode: 'class' }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
+</head>
+<body class="font-poppins bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300 h-screen flex flex-col">
+<div class="flex-1 overflow-auto">
+    <div class="flex-1">
+        <header>
+            <nav class="bg-blue-500 text-white p-4 flex justify-between items-center">
+                <div class="logo text-xl font-bold"><i class="fas fa-chart-line mr-2"></i>FinanceTracker</div>
+                <button class="hamburger md:hidden focus:outline-none" title="Toggle navigation menu">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+                <ul class="nav-menu hidden md:flex space-x-4 items-center">
+                    <li><a href="index.html" class="hover:underline">Dashboard</a></li>
+                    <li><a href="transactions.html" class="hover:underline">Transactions</a></li>
+                    <li><a href="budget.html" class="hover:underline">Budget</a></li>
+                    <li><a href="reports.html" class="hover:underline">Reports</a></li>
+                    <li><a href="goals.html" class="hover:underline">Goals</a></li>
+                    <li><a href="settings.html" class="hover:underline">Settings</a></li>
+                    <li><a href="login.html" class="hover:underline">Login</a></li>
+                    <li class="theme-toggle cursor-pointer"><i class="fas fa-moon" id="theme-icon"></i></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="reports p-8 max-w-4xl mx-auto grid gap-6">
+            <h2 class="text-2xl font-bold text-center"><i class="fas fa-chart-pie mr-2"></i>Financial Reports</h2>
+            <div class="filters grid gap-4 max-w-md mx-auto">
+                <input type="date" id="from-date" class="p-2 border-2 border-gradient-to-r from-lime-400 to-green-500 rounded focus:ring-2 focus:ring-blue-500" aria-label="From Date">
+                <input type="date" id="to-date" class="p-2 border-2 border-gradient-to-r from-orange-400 to-red-500 rounded focus:ring-2 focus:ring-blue-500" aria-label="To Date">
+                <button id="apply-filter" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition-colors"><i class="fas fa-filter mr-2"></i>Apply Filter</button>
+            </div>
+            <canvas id="incomeExpensePie" class="w-full h-64"></canvas>
+            <canvas id="categoryPie" class="w-full h-64"></canvas>
+            <canvas id="monthlyLine" class="w-full h-64"></canvas>
+        </section>
+    </div>
+</div>
+    <footer class="text-center py-4 bg-gray-200 dark:bg-gray-800 w-full">
+        <p>©NiloyTheSPD. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
